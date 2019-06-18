@@ -1,0 +1,68 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+
+<style type="text/css">
+	.form1{
+		width: 43%;
+		margin-top: 100px;		
+	}
+</style>
+
+<div class="container">
+    <div align="center" style="margin-top: 0px; width: 100%;">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+    </div>    
+</div>
+
+
+<div align="center">
+	<div class="form form1">
+						<h1>Make a Post</h1>
+						<form style="margin-top: 20px;" action="/upload" class="form-group" method="POST" enctype="multipart/form-data">
+							{{ form.hidden_tag() }}
+
+							<div class="form-group">
+									{% if form.title.errors %}
+										{{ form.title(class="form-control form-control-lg is-invalid", placeholder="title") }}
+										<div class="invalid-feedback">
+											{% for error in form.title.errors %}
+												<span>{{ error }}</span>
+											{% endfor %}
+										</div>
+									{% else %}
+										{{ form.title(class="form-control form-control-lg", placeholder="title") }}
+									{% endif %}
+							</div>
+							<div class="form-group">
+									{% if form.content.errors %}
+										{{ form.content(class="form-control form-control-lg is-invalid", placeholder="assignment content") }}
+										<div class="invalid-feedback">
+											{% for error in form.content.errors %}
+												<span>{{ error }}</span>
+											{% endfor %}
+										</div>
+									{% else %}
+										{{ form.content( rows="4", class="form-control form-control-lg", placeholder="content of assignment") }}
+									{% endif %}
+							</div>
+							<div class="custom-file">
+								<input type="file" name="file" class="custom-file-input course-mat" required="">
+			       			</div>
+					
+							<div class="form-group" style="margin-top: 20px;">
+							  	{{ form.submit(class="btn btn-success") }}
+							</div>
+						</form>
+					</div>
+</div>
+
+{% endblock content %}

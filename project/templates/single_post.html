@@ -1,0 +1,184 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+
+<div class="cont1" style="height: 80px;width: 100%">
+
+</div>
+<div class="first-bg bg-img jarallax">
+	<div align="center">
+		<h1 style="color: white;">MoneyMade</h1>
+	</div>
+</div>
+
+<div class="container blog-post-links">
+	<div class="row">
+		<div class="col-md-8">
+			<h2>{{ post.title }}</h2>
+			
+			<div class="single-post-img">
+				<a href=""><img src="/static/img/{{ post.image_name }}" class="img-responsive"></a>
+			</div>
+			<div class="single-post-content">
+				{{ post.content }}
+			</div>
+			<hr>
+			<h2>Comments</h2>
+			<hr width="">
+			<div class="comments">
+				{% for i in c_ment %}
+					<div class="single-comment">
+						<div>
+							<a href="#">{{ i.name }}</a>
+						</div>
+						<p>{{ i.content }}</p>
+						<div align="right">
+							{{ i.date.strftime('%b %d, %Y') }}
+						</div>
+					</div>
+
+				{% endfor %}
+			</div>
+			
+			<hr>
+			<div class="form" style="width: 70%;">
+				<form class="form-group single-post-form" method="POST">
+					{{ form.hidden_tag() }}
+
+					<div class="form-group">
+						{% if form.name.errors %}
+							{{ form.name(class="form-control form-control-lg is-invalid", placeholder="name") }}
+							<div class="invalid-feedback">
+								{% for error in form.name.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.name(class="form-control form-control-lg", placeholder="name... facebook name recommended") }}
+						{% endif %}
+					</div>
+					<div class="form-group">
+						{% if form.content.errors %}
+							{{ form.content(class="form-control form-control-lg is-invalid", placeholder="assignment content") }}
+							<div class="invalid-feedback">
+								{% for error in form.content.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.content( rows="4", class="form-control form-control-lg", placeholder="content of assignment") }}
+						{% endif %}
+					</div>
+					<div class="form-group" style="margin-top: 20px;" align="right">
+							  	{{ form.submit(class="btn btn-success") }}
+					</div>
+
+					<!-- <input type="text" name="name" class="form-control" placeholder="name" required="">
+					<textarea class="form-control" placeholder="comment" required=""></textarea>
+					<div align="right" style="margin-top: 20px;">
+						<button type="submit" class="btn" style="background-color: #1cc3b2;color: white;">comment</button>	
+					</div> -->
+					
+				</form>
+			</div>
+			<hr>
+		</div>
+		<div class="col-md-4">
+			<div class="newsletter">
+				<div class="newsletter-inner">
+					<h3>Newsletter</h3>
+					<p>Subscribe to our newsletter to get <br> notifications and new updates.</p>
+
+					<form class="form" action="/subscribe" method="POST">
+						{{ form.hidden_tag() }}
+						<div class="form-group">
+							{% if sub_form.email.errors %}
+								{{ sub_form.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
+								<div class="invalid-feedback">
+									{% for error in sub_form.email.errors %}
+										<span>{{ error }}</span>
+									{% endfor %}
+								</div>
+							{% else %}
+								{{ sub_form.email(class="form-control form-control-lg", placeholder="Email") }}
+							{% endif %}
+						</div>
+						<div class="form-group" style="margin-top: 20px;" align="right">
+						  	{{ sub_form.submit(class="btn btn-success") }}
+						</div>
+
+						<!-- <input type="email" name="email" class="form-control" placeholder="Enter your email...">
+						<button class="btn w-100">Subscribe</button> -->
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container contact">
+	<div class="contact-item w-item col-12 col-md-7">
+		<h1>Contact us now!</h1>
+		<p style="font-size: 16px;">Contact (+233) 055-735-4938</p>
+	</div>
+	<div class="contact-item text-right col-12 col-md-5">
+		<a href="{{ url_for('contact') }}"><button class="btn">Contact Now</button></a>
+	</div>
+</div>
+
+<!-- footer starts -->
+
+<footer class="footer-area">
+	<div class="container">
+		<div class="col-md-3 footer-col">
+			<h1 style="margin-bottom: 35px;">MoneyMade</h1>
+			<p style="font-size: 16px;">(+233)55-735-4938</p>
+			<p>lloydobeng@gmail.com</p>
+		</div>
+		<div class="col-md-3 footer-col">
+			<h3>Our Blog</h3>
+			<div>
+				<a href=""><span class="glyphicon glyphicon-shopping-cart"></span>  Advertising your products online.</a>
+			</div>
+		</div>
+		<div class="col-md-3 footer-col">
+			
+			<ul>
+				<h3>Links</h3>
+				<li><a href="{{ url_for('index') }}"><span class="fa fa-caret-right">Home</span></a></li>
+				<li><a href=""><span class="fa fa-caret-right">Articles</span></a></li>
+				<li><a href="{{ url_for('contact') }}"><span class="fa fa-caret-right">Contact Us</span></a></li>
+			</ul>
+		</div>
+		<div class="col-md-3 footer-col">
+			<h3>Subscribe Newsletter</h3>
+			<p>Subscribe to our newsletter to get <br> notifications and new updates.</p>
+
+			<form class="form" action="/subscribe" method="POST">
+						{{ form.hidden_tag() }}
+						<div class="form-group">
+							{% if sub_form.email.errors %}
+								{{ sub_form.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
+								<div class="invalid-feedback">
+									{% for error in sub_form.email.errors %}
+										<span>{{ error }}</span>
+									{% endfor %}
+								</div>
+							{% else %}
+								{{ sub_form.email(class="form-control form-control-lg", placeholder="Email") }}
+							{% endif %}
+						</div>
+						<div class="form-group" style="margin-top: 20px;" align="right">
+						  	{{ sub_form.submit(class="btn btn-success") }}
+						</div>
+
+						<!-- <input type="email" name="email" class="form-control" placeholder="Enter your email...">
+						<button class="btn w-100">Subscribe</button> -->
+			</form>
+		</div>
+	</div>
+</footer>
+
+<!-- footer ends -->
+{% endblock content %}

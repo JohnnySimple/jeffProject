@@ -1,0 +1,161 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+
+<div class="cont1" style="height: 80px;width: 100%">
+
+</div>
+<div class="contact-bg bg-img jarallax">
+	<div align="center">
+		<h1 style="color: white;padding: 120px;font-size: 50px">Contact Us</h1>
+	</div>
+</div>
+
+<div class="container contact-over">
+	<div  class="row" align="center">
+		<div class="col-md-3">
+			<span class="glyphicon glyphicon-earphone" style="font-size: 26px;"></span>
+			<p style="font-size: 26px;">Phone</p>
+			<p style="font-size: 16px;">(+233) 055-735-4938</p>
+		</div>
+		<div class="col-md-3">
+			<span class="glyphicon glyphicon-map-marker" style="font-size: 26px;"></span>
+			<p style="font-size: 26px;">Address</p>
+			<p style="font-size: 16px;">Odorkor, Accra, Ghana</p>
+		</div>
+		<div class="col-md-3">
+			<span class="glyphicon glyphicon-time" style="font-size: 26px;"></span>
+			<p style="font-size: 26px;">Open time</p>
+			<p style="font-size: 16px;">24/7</p>
+		</div>
+		<div class="col-md-3">
+			<span class="glyphicon glyphicon-envelope" style="font-size: 26px;"></span>
+			<p style="font-size: 26px;">Email</p>
+			<p style="font-size: 16px;">lloydobeng@gmail.com</p>
+		</div>
+	</div>
+</div>
+
+<div class="container contact-form" align="center">
+	<h3 style="color: #1cc3b2;">Contact Us</h3>
+	<div class="form" align="center">
+		<h1 style="margin-bottom: 30px;">Leave Message</h1>
+		<form class="form-group" action="/send_mail" method="POST">
+			{{ form.hidden_tag() }}
+			<div class="form-group">
+				{% if form.name.errors %}
+					{{ form.name(class="form-control form-control-lg is-invalid", placeholder="Your name") }}
+					<div class="invalid-feedback">
+						{% for error in form.name.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.name(class="form-control form-control-lg", placeholder="Your name") }}
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{% if form.email.errors %}
+					{{ form.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
+					<div class="invalid-feedback">
+						{% for error in form.email.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.email(class="form-control form-control-lg", placeholder="Email") }}
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{% if form.message.errors %}
+					{{ form.message(class="form-control form-control-lg is-invalid", placeholder="Message") }}
+					<div class="invalid-feedback">
+						{% for error in form.message.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.message( rows="4", class="form-control form-control-lg", placeholder="Message") }}
+				{% endif %}
+			</div>
+			<div class="form-group" style="margin-top: 20px;" align="right">
+			  	{{ form.submit(class="btn btn-success") }}
+			</div>
+			<!-- <div class="col-md-6"><input type="text" name="name" class="form-control" placeholder="Your Name"></div>
+			<div class="col-md-6"><input type="email" name="email" class="form-control" placeholder="Your Email"></div>
+			<div class="col-md-12"><textarea rows="7" class="form-control" placeholder="Your message"></textarea></div>
+			<div><button class="btn" style="color: #fff;background-color: #1cc3b2;margin-top: 30px;height: 46px;width: 200px; border-radius: 0px;">Send message</button></div> -->
+		</form>
+			
+	</div>
+</div>
+
+
+<div class="container contact">
+	<div class="contact-item w-item col-12 col-md-7">
+		<h1>Contact us now!</h1>
+		<p style="font-size: 16px;">Contact (+233) 055-735-4938</p>
+	</div>
+	<div class="contact-item text-right col-12 col-md-5">
+		<a href="{{ url_for('contact') }}"><button class="btn">Contact Now</button></a>
+	</div>
+</div>
+
+
+
+
+<!-- footer starts -->
+
+<footer class="footer-area">
+	<div class="container">
+		<div class="col-md-3 footer-col">
+			<h1 style="margin-bottom: 35px;">MoneyMade</h1>
+			<p style="font-size: 16px;">(+233)55-735-4938</p>
+			<p>lloydobeng@gmail.com</p>
+		</div>
+		<div class="col-md-3 footer-col">
+			<h3>Our Blog</h3>
+			<div>
+				<a href=""><span class="glyphicon glyphicon-shopping-cart"></span>  Advertising your products online.</a>
+			</div>
+		</div>
+		<div class="col-md-3 footer-col">
+			
+			<ul>
+				<h3>Links</h3>
+				<li><a href="{{ url_for('index') }}"><span class="fa fa-caret-right">Home</span></a></li>
+				<li><a href=""><span class="fa fa-caret-right">Articles</span></a></li>
+				<li><a href="{{ url_for('contact') }}"><span class="fa fa-caret-right">Contact Us</span></a></li>
+			</ul>
+		</div>
+		<div class="col-md-3 footer-col">
+			<h3>Subscribe Newsletter</h3>
+			<p>Subscribe to our newsletter to get <br> notifications and new updates.</p>
+
+			<form class="form" action="/subscribe" method="POST">
+						{{ form.hidden_tag() }}
+						<div class="form-group">
+							{% if sub_form.email.errors %}
+								{{ sub_form.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
+								<div class="invalid-feedback">
+									{% for error in sub_form.email.errors %}
+										<span>{{ error }}</span>
+									{% endfor %}
+								</div>
+							{% else %}
+								{{ sub_form.email(class="form-control form-control-lg", placeholder="Email") }}
+							{% endif %}
+						</div>
+						<div class="form-group" style="margin-top: 20px;" align="right">
+						  	{{ sub_form.submit(class="btn btn-success") }}
+						</div>
+
+						<!-- <input type="email" name="email" class="form-control" placeholder="Enter your email...">
+						<button class="btn w-100">Subscribe</button> -->
+			</form>
+		</div>
+	</div>
+</footer>
+
+<!-- footer ends -->
+{% endblock content %}
