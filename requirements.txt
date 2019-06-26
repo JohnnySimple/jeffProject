@@ -7,6 +7,8 @@ cffi==1.12.3
 chardet==3.0.4
 Click==7.0
 cycler==0.10.0
+entrypoints==0.3
+flake8==3.7.7
 Flask==1.0.2
 Flask-Admin==1.5.3
 Flask-Bcrypt==0.7.1
@@ -27,13 +29,16 @@ kiwisolver==1.0.1
 Markdown==3.0.1
 MarkupSafe==1.1.0
 matplotlib==3.0.2
+mccabe==0.6.1
 more-itertools==6.0.0
 numpy==1.16.1
 pandas==0.24.1
 Pillow==5.4.1
 protobuf==3.6.1
 PyAudio==0.2.11
+pycodestyle==2.5.0
 pycparser==2.19
+pyflakes==2.1.1
 pygame==1.9.4
 pyparsing==2.3.1
 pyperclip==1.7.0

@@ -12,7 +12,7 @@ from flask_mail import Message
 
 
 
-UPLOAD_FOLDER = 'D:/personalWebsite/projs/jeffBlog/project/static/img'
+UPLOAD_FOLDER = 'D:/personalWebsite/projs/jeff/jeffproject/project/static/img'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 
