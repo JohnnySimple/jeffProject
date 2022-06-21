@@ -31,7 +31,7 @@ MarkupSafe==1.1.0
 matplotlib==3.0.2
 mccabe==0.6.1
 more-itertools==6.0.0
-numpy==1.16.1
+numpy==1.22.0
 pandas==0.24.1
 Pillow==5.4.1
 protobuf==3.6.1
